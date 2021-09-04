@@ -1,0 +1,11 @@
+#include "cfxUDF.au3"
+Dim $CommPort = '4', $CommBaud = '4800', $CommBits = '8', $CommParity = '0', $CommStop = '0', $CommCtrl = '0011'
+
+$CommID = _opencomm($CommPort, $CommBaud, $CommBits, $CommParity, $CommStop, $CommCtrl)
+If $CommID <> "-1" Then
+;While 1
+    $BufferData = _rxwait($CommID, 75, 800)
+    ConsoleWrite($BufferData & @CRLF)
+;WEnd
+    _closecomm($CommID)
+EndIf
